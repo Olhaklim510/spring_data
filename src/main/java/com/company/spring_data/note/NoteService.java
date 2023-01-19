@@ -17,24 +17,21 @@ public class NoteService {
     }
 
     public synchronized void deleteById(Long id) {
-        if (!noteRepository.findById(id).get().getId().equals(id)) {
+        if (noteRepository.findById(id).isPresent()) {
             throw new NoSuchElementException("This note doesn't exist");
         }
         noteRepository.deleteById(id);
     }
 
     public synchronized void update(Note note) {
-        if (!noteRepository.findById(note.getId()).get().getId().equals(note.getId())) {
+        if (noteRepository.findById(note.getId()).isPresent()) {
             throw new NoSuchElementException("This note doesn't exist");
         }
         noteRepository.save(note);
     }
 
     public synchronized Note getById(Long id) {
-        if (!noteRepository.findById(id).get().getId().equals(id)) {
-            throw new NoSuchElementException("This note doesn't exist");
-        }
-        return noteRepository.findById(id).get();
+        return noteRepository.findById(id).orElseThrow(()->new NoSuchElementException("This note doesn't exist"));
     }
 
     public synchronized List<Note> listAll() {
