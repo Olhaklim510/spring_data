@@ -37,7 +37,10 @@ class NoteServiceTest {
         noteDelete.setContent("TestNoteContentDelete");
         noteService.add(noteDelete);
         Long id= noteDelete.getId();
+        System.out.println(id);
+        System.out.println(noteDelete);
         noteService.deleteById(id);
+        System.out.println(id);
 
         Assertions.assertThrows(NoSuchElementException.class, () ->noteService.getById(id));
     }
