@@ -5,9 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-
-@RequestMapping("/note")
 @Controller
+@RequestMapping("/note")
 public class NoteController {
     @Autowired
     private NoteService noteService;

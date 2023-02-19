@@ -67,10 +67,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             }
         };
 
-        System.out.println("Creating user");
-        System.out.println("result.getUsername() = " + result.getUsername());
-        System.out.println("result.getPassword() = " + result.getPassword());
-
         return result;
     }
 
